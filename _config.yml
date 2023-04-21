@@ -26,6 +26,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  aiw3ndil
 google_analytics: G-LSHFHZYYWT
+show_excerpts: true
 
 # Build settings
 theme: minima
@@ -52,6 +53,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-minima:
-  skin: dark
