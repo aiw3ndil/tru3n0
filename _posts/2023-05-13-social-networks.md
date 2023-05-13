@@ -13,7 +13,7 @@ anxiety at all when waiting for my friends reactions.
 
 I decided to come back after Elon Musk bought Twitter. Because is where I share my public interests, like this
 blog. And Elon is a great advocate of freedom of speech. When comes to share my thoughts, I know you're not 
-gonna like this but I'm a Paganist Pro-White. And it feels like you cannot say any of this on platforms like 
+gonna like this but I'm a Paganist. And it feels like you cannot say any of this on platforms like 
 Facebook. Now on Twitter you can.
 
 I don't know why Varg Vikerness was banned again but I hope him come back soon to Twitter. We need a platform
