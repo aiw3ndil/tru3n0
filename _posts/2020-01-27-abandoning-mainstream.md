@@ -3,6 +3,7 @@ layout: post
 title:  "Abandoning mainstream"
 tags: misc
 ---
+
 Recently I started to feel a lot of anxiety.
 
 I used to have to have a lot of things in mind, read a lot every day, keep myself updated on

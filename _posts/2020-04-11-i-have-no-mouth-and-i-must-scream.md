@@ -3,6 +3,7 @@ layout: post
 title:  "I Have No Mouth & I Must Scream by Harlan Ellison"
 tags: books
 ---
+
 This is my favorite fragment from the novel by Harlan Ellison, when AM speaks.
 
  "At first it meant Allied Mastercomputer, and then it meant Adaptative Manipulator, and later on it developed sentience and linked itselt up and they called it Agressive Menace, but by then it was too late, and finally *called itself* AM, emerging intelligence, and what it mean was I am .. *cogito ergo sum* ... I think, therefore I am".
