@@ -5,8 +5,7 @@ tags: ruby rails
 ---
 
 I'm my new application I'm using Rails 7.0.4 as I commented on
-my last post. This application is [jombo.es](https://jombo.es) in
-case you're interested.
+my last post.
 
 I don't know yet how works importmap. I have just a little idea.
 
