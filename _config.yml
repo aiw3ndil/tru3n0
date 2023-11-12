@@ -21,7 +21,7 @@
 title: tru3n0
 email: tru3n0@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Christianity remains to this day the greatest misfortune of humanity. - Friedrich Nietzsche
+footer_description: Christianity remains to this day the greatest misfortune of humanity. - Friedrich Nietzsche
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: 
