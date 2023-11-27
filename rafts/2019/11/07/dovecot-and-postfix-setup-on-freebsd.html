@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Dovecot and Postfix setup on FreeBSD | tru3n0</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Dovecot and Postfix setup on FreeBSD" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is my basic setup for Dovecot and Postfix under FreeBSD. I use LMTP for local mail delivery, that means all received email goes directly to an account on the system." />
+<meta property="og:description" content="This is my basic setup for Dovecot and Postfix under FreeBSD. I use LMTP for local mail delivery, that means all received email goes directly to an account on the system." />
+<link rel="canonical" href="http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html" />
+<meta property="og:url" content="http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html" />
+<meta property="og:site_name" content="tru3n0" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-07T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dovecot and Postfix setup on FreeBSD" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-11-07T00:00:00+01:00","datePublished":"2019-11-07T00:00:00+01:00","description":"This is my basic setup for Dovecot and Postfix under FreeBSD. I use LMTP for local mail delivery, that means all received email goes directly to an account on the system.","headline":"Dovecot and Postfix setup on FreeBSD","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html"},"url":"http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="tru3n0" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-LSHFHZYYWT"></script>
+<script>
+  window['ga-disable-G-LSHFHZYYWT'] = window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1";
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LSHFHZYYWT');
+</script>
+
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">tru3n0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Dovecot and Postfix setup on FreeBSD</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2019-11-07T00:00:00+01:00" itemprop="datePublished">
+        Nov 7, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>This is my basic setup for Dovecot and Postfix under FreeBSD. I use <a href="https://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol">LMTP</a> for local
+mail delivery, that means all received email goes directly to an account on the system.</p>
+
+<p>SMTP Authentication and secured connections with the server are also required.</p>
+
+<p>All the mail is stored in a Maildir style folders.</p>
+
+<ul>
+  <li>SMTP Authentication</li>
+  <li>SSL/TLS <a href="https://letsencrypt.org/">Take a look on Let’s Encrypt for a free certificate</a></li>
+  <li>LMTP</li>
+  <li>Maildir</li>
+</ul>
+
+<p>First of all you need to <a href="https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/mail-changingmta.html">disable sendmail</a>.</p>
+
+<p>When done your file <em>rc.conf</em> should look like the following.</p>
+
+<p><em>/etc/rc.conf</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postfix_enable="YES"
+dovecot_enable="YES"
+sendmail_enable="NO"
+sendmail_submit_enable="NO"
+sendmail_outbound_enable="NO"
+sendmail_msp_queue_enable="NO"
+saslauthd_enable="YES"
+</code></pre></div></div>
+
+<p>Now we can install whe required packages.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pkg install dovecot</code>
+<code class="language-plaintext highlighter-rouge">pkg install postfix-sasl-3.3.1_1,1</code></p>
+
+<p>The first file we need to modify is postfix <em>main.cf</em>. Be sure you
+have configured dovecot as your authentication mechanism for SMTP and your
+certificates are correctly set up and updated.</p>
+
+<p>Set your domain correctly according to the domain you want to use for email.</p>
+
+<p>In the first line you can check lmtp is the preferred mailbox transport.</p>
+
+<p><em>/usr/local/etc/postfix/main.cf</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myhostname = mail.yourdomain.com
+mydomain = yourdomain.com
+mailbox_transport = lmtp:unix:private/dovecot-lmtp
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_path        = private/auth
+smtpd_sasl_type        = dovecot
+smtpd_recipient_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_destination
+
+smtpd_tls_cert_file=/usr/local/etc/letsencrypt/live/www.yourdomain.com/fullchain.pem
+smtpd_tls_key_file=/usr/local/etc/letsencrypt/live/www.yourdomain.com/privkey.pem
+smtpd_use_tls=yes
+</code></pre></div></div>
+
+<p>All the email addresses who had an empty header will have an email address like address@mail.yourdomain.com.</p>
+
+<p>Next be sure your dovecot is using the lmtp protocol.</p>
+
+<p><em>/usr/local/etc/dovecot/dovecot.conf</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Protocols we want to be serving.
+protocols = imap pop3 lmtp
+</code></pre></div></div>
+
+<p>Now we need to restart the servers.</p>
+
+<p><code class="language-plaintext highlighter-rouge">service postfix restart</code>
+<code class="language-plaintext highlighter-rouge">service dovecot restart</code></p>
+
+<p>Thats all you need to get email working with a basic configuration, just to
+send and receive emails through your own domain.</p>
+
+  </div><a class="u-url" href="/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="http://localhost:4000/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Christianity remains to this day the greatest misfortune of humanity. - Friedrich Nietzsche</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

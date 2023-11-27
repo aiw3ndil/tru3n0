@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-23T03:47:51+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tru3n0</title><subtitle></subtitle><entry><title type="html">Social Networks</title><link href="http://localhost:4000/2023/05/13/social-networks.html" rel="alternate" type="text/html" title="Social Networks" /><published>2023-05-13T00:00:00+02:00</published><updated>2023-05-13T00:00:00+02:00</updated><id>http://localhost:4000/2023/05/13/social-networks</id><content type="html" xml:base="http://localhost:4000/2023/05/13/social-networks.html"><![CDATA[<p>It’s been a while since my last post. I decided to come back to Twitter and Facebook, but not Instagram.</p>
+
+<p>I love to share things with my friends. But not with the world, with this I mean, my personal life and photos.</p>
+
+<p>I have noticed an increase in anxiety after publishing things at the begining. Now I can publish and feel no 
+anxiety at all when waiting for my friends reactions.</p>
+
+<p>I decided to come back after Elon Musk bought Twitter. Because is where I share my public interests, like this
+blog. And Elon is a great advocate of freedom of speech. When comes to share my thoughts, I know you’re not 
+gonna like this but I’m a Paganist. And it feels like you cannot say any of this on platforms like 
+Facebook. Now on Twitter you can.</p>
+
+<p>I don’t know why Varg Vikerness was banned again but I hope him come back soon to Twitter. We need a platform
+fully free for freedom of speech and Varg is a great inspiration to me when it comes to Paganism and survivalism.</p>
+
+<p>So I started to choose better social networks that the currents available for example instead of YouTube I choose
+odysee.</p>
+
+<p>And instead of Twitch, DLive, I think they are better platforms that everyone concerned about freedom of 
+speech should use.</p>]]></content><author><name></name></author><category term="misc" /><summary type="html"><![CDATA[It’s been a while since my last post. I decided to come back to Twitter and Facebook, but not Instagram.]]></summary></entry><entry><title type="html">Rails 7 Devise not showing errors or validations</title><link href="http://localhost:4000/2023/01/31/rails-7-devise-not-showing-errors.html" rel="alternate" type="text/html" title="Rails 7 Devise not showing errors or validations" /><published>2023-01-31T00:00:00+01:00</published><updated>2023-01-31T00:00:00+01:00</updated><id>http://localhost:4000/2023/01/31/rails-7-devise-not-showing-errors</id><content type="html" xml:base="http://localhost:4000/2023/01/31/rails-7-devise-not-showing-errors.html"><![CDATA[<p>I’m my new application I’m using Rails 7.0.4 as I commented on
+my last post.</p>
+
+<p>I don’t know yet how works importmap. I have just a little idea.</p>
+
+<p>So let’s say in you have an file named <code class="language-plaintext highlighter-rouge">app/views/layouts/application.html.erb</code>.
+This file is the entire layout for your site.</p>
+
+<p>As you can see, inside this file there is a declaration to load the 
+javascript files using importmap:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;%= javascript_importmap_tags %&gt;
+</code></pre></div></div>
+
+<p>Well, this method does not behave as desired with our devise templates.</p>
+
+<p>If you go to your sign_in url, usually <code class="language-plaintext highlighter-rouge">http://127.0.0.1:3000/users/sign_in</code> 
+and click on the submit button without entering no data. You will notice 
+nothing at all.</p>
+
+<p>This is because importmap is using an XHR request but not loading the turbo
+data in the page. I have searched a lot about this issue but found nothing.</p>
+
+<p>The only thing I found useful was the idea of using another layout only for 
+devise without using importmap. So I did that. I created an exact copy of the
+<code class="language-plaintext highlighter-rouge">app/views/layouts/application.html.erb</code> named <code class="language-plaintext highlighter-rouge">app/views/layouts/session.html.erb</code>
+replacing the javascript part mentioned before for this one:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;%= javascript_include_tag %&gt;
+</code></pre></div></div>
+
+<p>And let decide the application which layout use in each case in the file
+<code class="language-plaintext highlighter-rouge">app/controllers/application_controller.rb</code> with this content:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># frozen_string_literal: true
+
+class ApplicationController &lt; ActionController::Base
+  layout :layout_by_resource
+
+  private
+
+    def layout_by_resource
+      devise_controller? ? "session" : "application"
+    end
+end
+</code></pre></div></div>
+
+<p>So now I can see and format my Devise validations.</p>]]></content><author><name></name></author><category term="ruby" /><category term="rails" /><summary type="html"><![CDATA[I’m my new application I’m using Rails 7.0.4 as I commented on my last post.]]></summary></entry><entry><title type="html">Using Tailwind with Ruby on Rails 7</title><link href="http://localhost:4000/2023/01/20/rails-7-and-tailwind.html" rel="alternate" type="text/html" title="Using Tailwind with Ruby on Rails 7" /><published>2023-01-20T00:00:00+01:00</published><updated>2023-01-20T00:00:00+01:00</updated><id>http://localhost:4000/2023/01/20/rails-7-and-tailwind</id><content type="html" xml:base="http://localhost:4000/2023/01/20/rails-7-and-tailwind.html"><![CDATA[<p>I decided to start a new project this year. I’m a big fan of Ruby On Rails so I
+decided to use the latest version (7.0.4) at the time of this post. And for
+Ruby the version 3.1.3</p>
+
+<p>After following the guide on <a href="https://tailwindcss.com/docs/guides/ruby-on-rails">Tailwind documentation</a>
+I used the command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">rails new my-app --css tailwind</code></p>
+
+<p>I have created a new css file on the directory <code class="language-plaintext highlighter-rouge">app &gt; assets &gt; stylesheets</code> named <code class="language-plaintext highlighter-rouge">session.css</code> with
+the following content:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.body-session {
+  @apply bg-gray-100 font-sans h-screen w-scren;
+}
+</code></pre></div></div>
+
+<p>And then imported the file on app &gt; assets &gt; stylesheets &gt; application.css this way:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "session";
+</code></pre></div></div>
+
+<p>But the modifications seems to not work.</p>
+
+<p>I have been reading the documentation and find out the elements must be loaded in certain order.
+For example you fist load the base styles, then the components and last the utilities.</p>
+
+<p>So it would look similar to this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .container {
+    @apply font-sans;
+  }
+}
+</code></pre></div></div>
+
+<p>As you can see inside the layer you can modify your base elements. This also has to be included on
+the file <code class="language-plaintext highlighter-rouge">app/assets/stylesheets/application.tailwind.css</code>.</p>
+
+<p>I would be looking for more information and updating the post soon.</p>]]></content><author><name></name></author><category term="ruby" /><category term="rails" /><summary type="html"><![CDATA[I decided to start a new project this year. I’m a big fan of Ruby On Rails so I decided to use the latest version (7.0.4) at the time of this post. And for Ruby the version 3.1.3]]></summary></entry><entry><title type="html">Coming back</title><link href="http://localhost:4000/2023/01/16/coming-back.html" rel="alternate" type="text/html" title="Coming back" /><published>2023-01-16T00:00:00+01:00</published><updated>2023-01-16T00:00:00+01:00</updated><id>http://localhost:4000/2023/01/16/coming-back</id><content type="html" xml:base="http://localhost:4000/2023/01/16/coming-back.html"><![CDATA[<p>During this two years I have been being more and more antisocial. I just attended to family reunions
+and abandoned all my morning visits to my nearest coffee shop. I used to go every day, drink orange
+juice with two sandwhiches and look around me for a while. I found comfort in silence. I used to do
+a lot of walking every day, but somehow I feel very distracted from my purpose, that of endure on
+my skills.</p>
+
+<p>So now, I stay almost always at my house, working remotely, reading books, mostly philosophical books,
+but also fantasy and science fiction. I remember reading Arthur Schopenhauer and get very deppresed,
+but not everything was bad, he draws reality in a very fatalist way but describes the stages of life
+very well. Even as a person who only worked 3 hours a day, he remained focused on his work. One of the 
+things that has struck me the most is his belief that being poor in the old age is the hardest thing
+that can happen to a person. That idea stuck on my head.</p>
+
+<p>When I started with Nietzsche the contrary happens to me, I felt full of energy and willing to achieve
+anything.</p>
+
+<p>In this two years I learned a lot with this two authors. I could summarize it in three important aspects
+you have to choose to improve your life. And are these:</p>
+
+<ol>
+  <li>Choose to live where the wheather is with you.</li>
+  <li>Eat well, all kinds of food and avoid alcohol whenever you can.</li>
+  <li>Choose your spiritual food well, I mean books, movies, music and activities.</li>
+</ol>]]></content><author><name></name></author><category term="misc" /><summary type="html"><![CDATA[During this two years I have been being more and more antisocial. I just attended to family reunions and abandoned all my morning visits to my nearest coffee shop. I used to go every day, drink orange juice with two sandwhiches and look around me for a while. I found comfort in silence. I used to do a lot of walking every day, but somehow I feel very distracted from my purpose, that of endure on my skills.]]></summary></entry><entry><title type="html">Overdose of communication</title><link href="http://localhost:4000/2020/11/17/overdose-of-communication.html" rel="alternate" type="text/html" title="Overdose of communication" /><published>2020-11-17T00:00:00+01:00</published><updated>2020-11-17T00:00:00+01:00</updated><id>http://localhost:4000/2020/11/17/overdose-of-communication</id><content type="html" xml:base="http://localhost:4000/2020/11/17/overdose-of-communication.html"><![CDATA[<p>Actually this post has nothing to do with his title. I was reading some of the thoughts
+of James Baudrillard about the consumer society and just re-realized the quote from The Matrix 
+movie: “Watch them liquefy the dead so they could be fed intravenously to the living.” We are
+just living the same production/consuming cycles over and over again.</p>
+
+<p>I’ts funny how Baudrillard refers to it as an endless Apocallypsis. But actually it is. Most
+of us realized it at some point and just get through it as an skeptical consumer or an 
+outsider that tries in some way to fight or accelerate the timing of this cycles trying
+to stay focused on what we believe it’s real. So things like old unix systems, nice 
+programming languages as Ruby, not only because of it’s cool and friendly but because of the
+philosophy it holds inside because of it’s creator awareness of this phenomena,
+the impermanence of things, and some other concepts fairly more extended in Asia that now
+are being feed (again) into occidental culture. But not in the form of pseudo-spirituality
+full of LSD and special effects but as a new point of view about current consumer society.</p>
+
+<p>We are totally misunderstanding the aesthetics enhancements that brings spirituality. With a 
+new concept of consumption that calls for this “symbolic eyes” and unreal perception
+of what Zen means to reality or even spirituality.</p>
+
+<p>In brief… this only makes me feel more comfortable using again and again the work of the
+elder wizards like the people behind the FreeBSD project, Ruby On Rails and more recently
+Ember.js as a way to avoid this spiral of auto-destruction we call society nowadays.</p>
+
+<p>It’s time to seat back and see the system trying to do a very-fast-hard-reset.</p>]]></content><author><name></name></author><category term="misc" /><summary type="html"><![CDATA[Actually this post has nothing to do with his title. I was reading some of the thoughts of James Baudrillard about the consumer society and just re-realized the quote from The Matrix movie: “Watch them liquefy the dead so they could be fed intravenously to the living.” We are just living the same production/consuming cycles over and over again.]]></summary></entry><entry><title type="html">2020 almost gone… 2021 stardust coming</title><link href="http://localhost:4000/2020/10/24/2020-almost-gone-stardust-coming.html" rel="alternate" type="text/html" title="2020 almost gone… 2021 stardust coming" /><published>2020-10-24T00:00:00+02:00</published><updated>2020-10-24T00:00:00+02:00</updated><id>http://localhost:4000/2020/10/24/2020-almost-gone-stardust-coming</id><content type="html" xml:base="http://localhost:4000/2020/10/24/2020-almost-gone-stardust-coming.html"><![CDATA[<p>Well. This has been a tough year. Very difficult in so many ways. At least I’m sure I have found real love. A real, 
+close and deep connection with a woman. For the first time in my life I feel the immensity of that word, and the power 
+that holds inside. At the beginning it feels like your entire world and even image of yourself is melting down. 
+So who you really are? This time that doesn’t matter. What really matters is that you are going to born again in a 
+new being. This “new” being seems like a mental image of yourself (at least for me) close to an illusion, but with 
+a strain that makes you feel that this is an eternal gift and you are going to a place where the physical doesn’t 
+matter that much. In one word: Eternity.</p>
+
+<p>Is strange when you realize that every picture that has been in front of you will continue to manifest in some way 
+forever.</p>
+
+<p>As weird as it sounds your aura will manifest that energy in yourself and your surroundings, nature and fellows.</p>
+
+<p>Somehow love continues to be the only possible way to interpret reality, but where is the handbrake when you are 
+dealing with the most delightful dreams and you have to go back to “reality”, I mean, work, school, family, friends…?</p>
+
+<p>I started to believe the words of an spiritual teacher told me more than 6 years ago: «We are One».</p>
+
+<p>I want to finish this with a fragment of one of my favourite Nu Metal bands P.O.D.</p>
+
+<blockquote>
+  <p>Cause I, I’m addicted, To all the colors that I see, that you hold in front of me, And you have changed, 
+yeah you have changed me”</p>
+</blockquote>]]></content><author><name></name></author><category term="misc" /><summary type="html"><![CDATA[Well. This has been a tough year. Very difficult in so many ways. At least I’m sure I have found real love. A real, close and deep connection with a woman. For the first time in my life I feel the immensity of that word, and the power that holds inside. At the beginning it feels like your entire world and even image of yourself is melting down. So who you really are? This time that doesn’t matter. What really matters is that you are going to born again in a new being. This “new” being seems like a mental image of yourself (at least for me) close to an illusion, but with a strain that makes you feel that this is an eternal gift and you are going to a place where the physical doesn’t matter that much. In one word: Eternity.]]></summary></entry><entry><title type="html">About programming</title><link href="http://localhost:4000/2020/10/20/about-programming.html" rel="alternate" type="text/html" title="About programming" /><published>2020-10-20T00:00:00+02:00</published><updated>2020-10-20T00:00:00+02:00</updated><id>http://localhost:4000/2020/10/20/about-programming</id><content type="html" xml:base="http://localhost:4000/2020/10/20/about-programming.html"><![CDATA[<p>It’s been a while since I started to play around with software programming languages.
+When I was eleven years old I give Basic a first try. I get amazed very fast with loops,
+the goto function and the possibility of emit sounds at a determined frequency
+with the computer speaker, also get to know the use of hex colors. Creating interactive
+scripts was funny because I could create start scripts for my games and favorite applications.</p>
+
+<p>In only a few weeks I became obsessed with the idea of create a videogame so I moved to
+Pascal and Borland Delphi. A friend of mine discovered a package or IDE for game programming,
+the software in question was Div Games Studio 2. There was the real beginning, all of my friends
+started creating games with Div2 it was a great summer (we were kids on vacation) and all of
+us created really cool demos, but one of us really stood out about the rest, he developed his own
+particle system for creating really cool explossions almost with no lag, him called the demo supernova.</p>
+
+<p>I learned so much from this friend, it was 3 years older than me and he did a great job on explaining me
+things about resources consuming and basic topics about optimization and maths.</p>
+
+<p>With the passing of time we discovered Div2 was very resource consuming for the kind of demos we were
+creating and we started to diverge. I choose the path of C++ when my older friend started with .net and C#.</p>
+
+<p>At this time I already was a big FreeBSD fanboy and GNU/Linux user. So I decided to learn all I could
+about systems administration and maintenance. I fall in love with servers to be honest, I tried every kind
+of home made server at my home. So I started to think in the long way about internet gaming so I learned
+PHP 4, so I begin a long trip of reverse engineering of applications written in PHP, like XOOPS, PHPNUKE
+and later Drupal and Wordpress. It was fast to create things and funny to have things running on your own
+computer connected to internet with DynDNS.</p>
+
+<p>But what happens when you grow up as a programmer, you have done a lot of functional programming and you
+started to realize that being polyglot is an advantage rather than a weakness because you can get rid of
+old gigantic-monolithic applications and structure applications in a very efficient way. You can create
+every resource consuming part of your app as a service that can be accessed from any application.</p>
+
+<p>For me right now is the way to go, resource optimization always will translate in saving natural resources.</p>]]></content><author><name></name></author><category term="misc" /><category term="programming" /><summary type="html"><![CDATA[It’s been a while since I started to play around with software programming languages. When I was eleven years old I give Basic a first try. I get amazed very fast with loops, the goto function and the possibility of emit sounds at a determined frequency with the computer speaker, also get to know the use of hex colors. Creating interactive scripts was funny because I could create start scripts for my games and favorite applications.]]></summary></entry><entry><title type="html">I Have No Mouth &amp;amp; I Must Scream by Harlan Ellison</title><link href="http://localhost:4000/2020/04/11/i-have-no-mouth-and-i-must-scream.html" rel="alternate" type="text/html" title="I Have No Mouth &amp;amp; I Must Scream by Harlan Ellison" /><published>2020-04-11T00:00:00+02:00</published><updated>2020-04-11T00:00:00+02:00</updated><id>http://localhost:4000/2020/04/11/i-have-no-mouth-and-i-must-scream</id><content type="html" xml:base="http://localhost:4000/2020/04/11/i-have-no-mouth-and-i-must-scream.html"><![CDATA[<p>This is my favorite fragment from the novel by Harlan Ellison, when AM speaks.</p>
+
+<p>“At first it meant Allied Mastercomputer, and then it meant Adaptative Manipulator, and later on it developed sentience and linked itselt up and they called it Agressive Menace, but by then it was too late, and finally <em>called itself</em> AM, emerging intelligence, and what it mean was I am .. <em>cogito ergo sum</em> … I think, therefore I am”.</p>
+
+<p>HATE. LET ME TELL
+YOU HOW MUCH I’VE
+COME TO HATE YOU
+SINCE I BEGAN TO
+LIVE.  THERE ARE
+387.44 MILLION MILES
+OF PRINTED CIRCUITS
+IN WAFER THIN LAYERS
+THAN FILL MY
+COMPLEX. IF THE
+WORD HATE WAS
+ENGRAVED ON EACH
+NANOANGSRTOM OF
+THOSE HUNDREDS OF
+MILLIONS OF MILES IT
+WOULD NOT EQUAL
+ONE ONE-BILLIONTH
+OF THE HATE I FEEL
+FOR HUMANS AT THIS
+MICRO-INSTANT FOR
+YOU. HATE. HATE.
+AM said it with the sliding cold horror of a razor
+blade slicing my eyeball. AM said it with the 
+bubbling thickness of my lungs filling with phlegm,
+drowning me from within.</p>]]></content><author><name></name></author><category term="books" /><summary type="html"><![CDATA[This is my favorite fragment from the novel by Harlan Ellison, when AM speaks.]]></summary></entry><entry><title type="html">Abandoning mainstream</title><link href="http://localhost:4000/2020/01/27/abandoning-mainstream.html" rel="alternate" type="text/html" title="Abandoning mainstream" /><published>2020-01-27T00:00:00+01:00</published><updated>2020-01-27T00:00:00+01:00</updated><id>http://localhost:4000/2020/01/27/abandoning-mainstream</id><content type="html" xml:base="http://localhost:4000/2020/01/27/abandoning-mainstream.html"><![CDATA[<p>Recently I started to feel a lot of anxiety.</p>
+
+<p>I used to have to have a lot of things in mind, read a lot every day, keep myself updated on
+almost every skill I have.</p>
+
+<p>This implies my hobbies as well. You know, videogames, anime, listen to every new metal band,
+and of course add new hobbies to the list.</p>
+
+<p>For more than 10 years I was feeling the necessity of constant input stream. Some times I was
+nervous about “losing my way”.</p>
+
+<p>So I started to just leave things, the first thing I needed to get rid off was social pressure.
+As stupid as it sounds, having nothing to say during social interactions may feel very 
+uncomfortable.</p>
+
+<p>At the begining I feel a lot of pressure to interact with other people, sitting in silence
+was very difficult to me after years sharing my interests with people and getting input
+from them.</p>
+
+<p>But the more I shared and get to know about others opinions, likes and passions the less sense
+of individuality I feel. My microcosmos was dissapearing and with the passing of years,
+every feeling that conformed my personality was absolutely a distant echo.</p>
+
+<p>What about my first years as an individual, the curiosity, the need to know more about things.</p>
+
+<p>And of course the concentration that only brings passion.</p>
+
+<p>Now, my only input from the outside world is that than I can get from books.</p>
+
+<p>I started to unsubscribe myself from every single network I was and attending only to vital
+matters from my contacts and friends.</p>]]></content><author><name></name></author><category term="misc" /><summary type="html"><![CDATA[Recently I started to feel a lot of anxiety.]]></summary></entry><entry><title type="html">Dovecot and Postfix setup on FreeBSD</title><link href="http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html" rel="alternate" type="text/html" title="Dovecot and Postfix setup on FreeBSD" /><published>2019-11-07T00:00:00+01:00</published><updated>2019-11-07T00:00:00+01:00</updated><id>http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd</id><content type="html" xml:base="http://localhost:4000/2019/11/07/dovecot-and-postfix-setup-on-freebsd.html"><![CDATA[<p>This is my basic setup for Dovecot and Postfix under FreeBSD. I use <a href="https://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol">LMTP</a> for local
+mail delivery, that means all received email goes directly to an account on the system.</p>
+
+<p>SMTP Authentication and secured connections with the server are also required.</p>
+
+<p>All the mail is stored in a Maildir style folders.</p>
+
+<ul>
+  <li>SMTP Authentication</li>
+  <li>SSL/TLS <a href="https://letsencrypt.org/">Take a look on Let’s Encrypt for a free certificate</a></li>
+  <li>LMTP</li>
+  <li>Maildir</li>
+</ul>
+
+<p>First of all you need to <a href="https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/mail-changingmta.html">disable sendmail</a>.</p>
+
+<p>When done your file <em>rc.conf</em> should look like the following.</p>
+
+<p><em>/etc/rc.conf</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postfix_enable="YES"
+dovecot_enable="YES"
+sendmail_enable="NO"
+sendmail_submit_enable="NO"
+sendmail_outbound_enable="NO"
+sendmail_msp_queue_enable="NO"
+saslauthd_enable="YES"
+</code></pre></div></div>
+
+<p>Now we can install whe required packages.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pkg install dovecot</code>
+<code class="language-plaintext highlighter-rouge">pkg install postfix-sasl-3.3.1_1,1</code></p>
+
+<p>The first file we need to modify is postfix <em>main.cf</em>. Be sure you
+have configured dovecot as your authentication mechanism for SMTP and your
+certificates are correctly set up and updated.</p>
+
+<p>Set your domain correctly according to the domain you want to use for email.</p>
+
+<p>In the first line you can check lmtp is the preferred mailbox transport.</p>
+
+<p><em>/usr/local/etc/postfix/main.cf</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myhostname = mail.yourdomain.com
+mydomain = yourdomain.com
+mailbox_transport = lmtp:unix:private/dovecot-lmtp
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_path        = private/auth
+smtpd_sasl_type        = dovecot
+smtpd_recipient_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_destination
+
+smtpd_tls_cert_file=/usr/local/etc/letsencrypt/live/www.yourdomain.com/fullchain.pem
+smtpd_tls_key_file=/usr/local/etc/letsencrypt/live/www.yourdomain.com/privkey.pem
+smtpd_use_tls=yes
+</code></pre></div></div>
+
+<p>All the email addresses who had an empty header will have an email address like address@mail.yourdomain.com.</p>
+
+<p>Next be sure your dovecot is using the lmtp protocol.</p>
+
+<p><em>/usr/local/etc/dovecot/dovecot.conf</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Protocols we want to be serving.
+protocols = imap pop3 lmtp
+</code></pre></div></div>
+
+<p>Now we need to restart the servers.</p>
+
+<p><code class="language-plaintext highlighter-rouge">service postfix restart</code>
+<code class="language-plaintext highlighter-rouge">service dovecot restart</code></p>
+
+<p>Thats all you need to get email working with a basic configuration, just to
+send and receive emails through your own domain.</p>]]></content><author><name></name></author><category term="systems" /><summary type="html"><![CDATA[This is my basic setup for Dovecot and Postfix under FreeBSD. I use LMTP for local mail delivery, that means all received email goes directly to an account on the system.]]></summary></entry></feed>

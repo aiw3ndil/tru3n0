@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Using Tailwind with Ruby on Rails 7 | tru3n0</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Using Tailwind with Ruby on Rails 7" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I decided to start a new project this year. I’m a big fan of Ruby On Rails so I decided to use the latest version (7.0.4) at the time of this post. And for Ruby the version 3.1.3" />
+<meta property="og:description" content="I decided to start a new project this year. I’m a big fan of Ruby On Rails so I decided to use the latest version (7.0.4) at the time of this post. And for Ruby the version 3.1.3" />
+<link rel="canonical" href="http://localhost:4000/2023/01/20/rails-7-and-tailwind.html" />
+<meta property="og:url" content="http://localhost:4000/2023/01/20/rails-7-and-tailwind.html" />
+<meta property="og:site_name" content="tru3n0" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-20T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Using Tailwind with Ruby on Rails 7" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-01-20T00:00:00+01:00","datePublished":"2023-01-20T00:00:00+01:00","description":"I decided to start a new project this year. I’m a big fan of Ruby On Rails so I decided to use the latest version (7.0.4) at the time of this post. And for Ruby the version 3.1.3","headline":"Using Tailwind with Ruby on Rails 7","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2023/01/20/rails-7-and-tailwind.html"},"url":"http://localhost:4000/2023/01/20/rails-7-and-tailwind.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="tru3n0" /><script async src="https://www.googletagmanager.com/gtag/js?id=G-LSHFHZYYWT"></script>
+<script>
+  window['ga-disable-G-LSHFHZYYWT'] = window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1";
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LSHFHZYYWT');
+</script>
+
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">tru3n0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Using Tailwind with Ruby on Rails 7</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2023-01-20T00:00:00+01:00" itemprop="datePublished">
+        Jan 20, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>I decided to start a new project this year. I’m a big fan of Ruby On Rails so I
+decided to use the latest version (7.0.4) at the time of this post. And for
+Ruby the version 3.1.3</p>
+
+<p>After following the guide on <a href="https://tailwindcss.com/docs/guides/ruby-on-rails">Tailwind documentation</a>
+I used the command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">rails new my-app --css tailwind</code></p>
+
+<p>I have created a new css file on the directory <code class="language-plaintext highlighter-rouge">app &gt; assets &gt; stylesheets</code> named <code class="language-plaintext highlighter-rouge">session.css</code> with
+the following content:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.body-session {
+  @apply bg-gray-100 font-sans h-screen w-scren;
+}
+</code></pre></div></div>
+
+<p>And then imported the file on app &gt; assets &gt; stylesheets &gt; application.css this way:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "session";
+</code></pre></div></div>
+
+<p>But the modifications seems to not work.</p>
+
+<p>I have been reading the documentation and find out the elements must be loaded in certain order.
+For example you fist load the base styles, then the components and last the utilities.</p>
+
+<p>So it would look similar to this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .container {
+    @apply font-sans;
+  }
+}
+</code></pre></div></div>
+
+<p>As you can see inside the layer you can modify your base elements. This also has to be included on
+the file <code class="language-plaintext highlighter-rouge">app/assets/stylesheets/application.tailwind.css</code>.</p>
+
+<p>I would be looking for more information and updating the post soon.</p>
+
+  </div><a class="u-url" href="/2023/01/20/rails-7-and-tailwind.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="http://localhost:4000/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Christianity remains to this day the greatest misfortune of humanity. - Friedrich Nietzsche</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
