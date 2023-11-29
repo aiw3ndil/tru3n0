@@ -12,7 +12,7 @@ These one about coping with Jews:
 
 >One cannot defend oneself against the Jew. He attacks with lightning speed from his position of safety and uses his abilities to crush any attempt at defense.
 >
->Quickly he turns the attacker's charges back on him and the attacker becomes the liar, the troublemaker, the terrorist. Nothing could be more mistaken than to defend oneself. That's just what the Jew wants He can invent a new lie every day for the enemy to respond to, and the result is that the enemy spends so much time defending himself that he has no time to do what the Jew really fears: attack. Thc accused has become the accuser, and loudly he shoves the accuser intc the dock. So it always was in the past when a person or a movement fought the Jew. That's what would happen to us as well, were we not fully aware of his nature, and if we lacked the courage to draw thc following radical conclusions:
+>Quickly he turns the attacker's charges back on him and the attacker becomes the liar, the troublemaker, the terrorist. Nothing could be more mistaken than to defend oneself. That's just what the Jew wants He can invent a new lie every day for the enemy to respond to, and the result is that the enemy spends so much time defending himself that he has no time to do what the Jew really fears: attack. The accused has become the accuser, and loudly he shoves the accuser into the dock. So it always was in the past when a person or a movement fought the Jew. That's what would happen to us as well, were we not fully aware of his nature, and if we lacked the courage to draw the following radical conclusions:
 >
 >One cannot fight the Jew by positive means. He is a negative, and this negative must be erased from the German system or he will forever corrupt it.
 >
@@ -60,19 +60,13 @@ About the English people and Western culture and propaganda:
 
 On war:
 
->The Führer attaches particular importance to anti-Semitic propaganda for the English and other captives. They will later become the bearers of anti-Semitic belief in their countries. I will make a whole series of anti-Semitic pamphlets for these captives and submit them to them in an innocuous way. We should not, as the Führer says, in any way discourage ourselves from treating the Jewish Question by intellectual objections. Jewish crimes must be ruthlessly denounced, otherwise people won't understand what we mean and intend.
-
 >This war develops step by step. The enemy makes his move, we make ours. The greatest possible effort is called for. We must go to work with our last reserves of physical and spiritual strength, and our strength of nerve and intelligence. He whose breath fails first has lost. Never forget that, in the midst of the storms and sufferings of the present age, we must always rely on our moral strength—for that is the single weapon with which we can defend ourselves.
 
-The only time the subject of mass-murder is treated: 
-
->With the war now clearly turning against Germany, there were many issues more urgent than the deportation of Jews. As a consequence, we find only three relevant entries in the final six months of 1943. This fact argues strongly against those who claim that the mass-murder of the Jews was an overriding priority until the very end. Were it not for the Hungarian situation in mid-1944, we might have heard nothing more on it at all.
-
-Here Himmler speaks about deportation of the Jews:
+Here Thomas Dalton comments on Himmler decision:
 
 >October 1943 (11.10.72)
 
->Regarding the Jewish Question, [Himmlerl gives a very frank and candid picture. He is of the opinion that we can solve the Jewish Question for all of Europe by the end of this year. He advocates the most radical and harshest solution, namely, that the whole of Jewry will be rooted out. This is surely a consistent, if brutal, solution. We must accept the responsibility to completely solve this question in our time. Later generations will surely no longer have the courage or dedication to address this problem as we can do today.
+>Regarding the Jewish Question, [Himmler gives a very frank and candid picture. He is of the opinion that we can solve the Jewish Question for all of Europe by the end of this year. He advocates the most radical and harshest solution, namely, that the whole of Jewry will be rooted out. This is surely a consistent, if brutal, solution. We must accept the responsibility to completely solve this question in our time. Later generations will surely no longer have the courage or dedication to address this problem as we can do today.
 
 About the conditions in the Soviet Union:
 
