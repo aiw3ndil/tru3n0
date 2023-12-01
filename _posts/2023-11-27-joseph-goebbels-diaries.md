@@ -26,7 +26,7 @@ About the nature of the Jew and a possible solution to the Jewish Question:
 
 >The Jews long for one thing: to reward our foolishness with bloodshed and terror. It must never come to that. One of the most effective defenses is an unforgiving, cold hardness against the destroyers of our people, against the instigators of the war, against those who would benefit if we lose, and therefore also against the victims, if we win.
 
->We are dealing with the most dangerous enemy that ever threatened the life, freedom, and dignity of humanity. There can be no mercy
+>We are dealing with the most dangerous enemy that ever threatened the life, freedom, and dignity of humanity. There can be no mercy.
 
 >Primitive man did not know the lie, the Führer believes. Primitive man has only made his feelings known in a primitive manner through original sounds. There could be no question of an intention of disguising. Primitive man had no reason to think such a thing. When he felt pain, he made sounds of pain, and when he felt joy, he made sounds of joy. Of course, the more man developed intellectually, the more he also gained the ability to disguise his inner thoughts and express things other than what he felt. The Jew, as an absolutely intellectual being, was the first to learn how to master this art. He can therefore be regarded not only as the bearer, but also as the inventor of the lie among humans.
 
