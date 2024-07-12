@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hi! I am tru3n0 a Ruby Backend Developer based on Spain.
+Hi! I am tru3n0 a Ruby Backend Developer based on Finland.
 
 I've been programming since childhood, I started with Turbo Pascal at the age of eleven.
 I was a video game addict at that time and I tried a lot of times to finish a video game
