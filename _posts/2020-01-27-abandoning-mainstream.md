@@ -6,7 +6,7 @@ tags: misc
 
 Recently I started to feel a lot of anxiety.
 
-I used to have to have a lot of things in mind, read a lot every day, keep myself updated on
+I used to have a lot of things in mind, read a lot every day, keep myself updated on
 almost every skill I have.
 
 This implies my hobbies as well. You know, videogames, anime, listen to every new metal band,
