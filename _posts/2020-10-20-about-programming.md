@@ -18,7 +18,7 @@ us created really cool demos, but one of us really stood out about the rest, he 
 particle system for creating really cool explossions almost with no lag, him called the demo supernova.
 
 I learned so much from this friend, it was 3 years older than me and he did a great job on explaining me
-things about resources consuming and basic topics about optimization and maths.
+things about resources consumption and basic topics about optimization and maths.
 
 With the passing of time we discovered Div2 was very resource consuming for the kind of demos we were
 creating and we started to diverge. I choose the path of C++ when my older friend started with .net and C#.
